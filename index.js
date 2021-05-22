@@ -29,15 +29,15 @@ class HTTPHeartbeat {
     ping = async (logging = false) => {
         await fetch(this.url)
             .then(() => {
-                if (logging) this.logInfo("Pinged status monitor");
+                if (logging) this.#logInfo("Pinged the status monitor");
             })
             .catch((err) => {
-                this.logInfo(`ERROR: "${err}"`);
+                this.#logInfo(`ERROR: "${err}"`);
             });
     };
 
     /* Logs information to the console, formatted with the current UTC time */
-    logInfo(infoText) {
+    #logInfo(infoText) {
         let d = new Date();
         let timeStr = `${("0" + d.getUTCHours()).slice(-2)}:${("0" + d.getUTCMinutes()).slice(-2)}`;
         console.log(`[UTC ${timeStr}]: ${infoText}`);
@@ -47,11 +47,11 @@ class HTTPHeartbeat {
     startInterval(delay = defaultDelay) {
         if (!this.#interval) {
             this.ping();
-            this.logInfo("The heartbeat function started");
+            this.#logInfo("The heartbeat function started");
 
             this.#interval = setInterval(this.ping, delay, this.#logging);
         } else {
-            this.logInfo("ERROR: A heartbeat function is already running");
+            this.#logInfo("ERROR: A heartbeat function is already running");
         }
     }
 
