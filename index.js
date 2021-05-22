@@ -27,7 +27,6 @@ class HTTPHeartbeat {
 
     /* Sends a GET request to the specified url */
     ping = async (logging = false) => {
-        console.log(this.#interval);
         await fetch(this.url)
             .then(() => {
                 if (logging) this.logInfo("Pinged status monitor");
