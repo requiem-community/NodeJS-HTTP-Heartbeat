@@ -29,7 +29,7 @@ class HTTPHeartbeat {
     ping = async (logging = false) => {
         await fetch(this.url)
             .then(() => {
-                if (logging) this.#logInfo("Pinged the status monitor");
+                if (logging || this.#logging) this.#logInfo("Pinged the status monitor");
             })
             .catch((err) => {
                 this.#logInfo(`ERROR: "${err}"`);
