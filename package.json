@@ -2,13 +2,21 @@
   "name": "requiem-http-heartbeat",
   "version": "1.0.0",
   "description": "A small NodeJS library that helps you send get requests to the status monitor for Requiem",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/requiem-community/NodeJS-HTTP-Heartbeat.git"
   },
   "author": "0xJacoby",
   "license": "UNLICENSED",
   "dependencies": {
     "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.2.4"
   }
 }
